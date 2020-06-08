@@ -38,12 +38,12 @@ def Show():
         t = t + 1
     else:
         flag = 0
-    for i in notes1.keys():
+    for i in sorted(notes1.keys()):
         label = Label(root, text='%s' % i, font=('宋体',14))
         label.place(relx=0.05, rely=0.06 + 0.03 * t)
-        label = Label(root, text='%s' % notes1[i]['姓名'], font=('宋体', 14))
+        label = Label(root, text='%s' % notes1[i]['成员姓名'], font=('宋体', 14))
         label.place(relx=0.17, rely=0.06 + 0.03 * t)
-        label = Label(root, text='%s' % notes1[i]['性别'], font=('宋体', 14))
+        label = Label(root, text='%s' % notes1[i]['成员性别'], font=('宋体', 14))
         label.place(relx=0.29, rely=0.06 + 0.03 * t)
         label = Label(root, text='%s' % notes1[i]['成员状态'], font=('宋体', 14))
         label.place(relx=0.41, rely=0.06 + 0.03 * t)
@@ -152,10 +152,10 @@ def newwind_del():
         else:
             lb_2_3 = Label(DelNew, text='该成员不存在！')
             lb_2_3.pack()
-        btDel = Button(DelNew, text='删除', command=mydel)
-        btDel.pack()
-        btClose = Button(DelNew, text='退出', command=DelNew.destroy)
-        btClose.pack()
+    btDel = Button(DelNew, text='删除', command=mydel)
+    btDel.pack()
+    btClose = Button(DelNew, text='退出', command=DelNew.destroy)
+    btClose.pack()
 
 #修改学生子窗体
 def modi_status(args):
@@ -398,7 +398,7 @@ def newwind_Sfemale():
     SfemaleNew.title('使用该车女性总数')
     t = 0
     for i in notes1.keys():
-        if notes1[i]['性别']=='女':
+        if notes1[i]['成员性别']=='女':
             t = t+1
     lb_9 = Label(SfemaleNew, text='女性总数为 %d ' % t,font=('黑体',16,'bold'))
     lb_9.pack()
