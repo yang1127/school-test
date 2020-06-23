@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>动态数组</title>
+		<style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            /*边框折叠*/
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+        th,td{
+            border: 1px solid #d0d0d0;
+            color:#404060;
+            padding: 10px;
+        }
+        th{
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color:#fff;
+        }
+        td{
+            font: 14px "微软雅黑";
+        }
+        tbody tr{
+            background-color: #f0f0f0;
+        }
+        tbody tr:hover{
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+		
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script>
+			var stus=[  {"name":"惠婷","sex":"女", "loves":["唱歌","跳舞","男"]},
+						{"name":"惠婷","sex":"女", "loves":["唱歌","跳舞","男"]},
+						{"name":"惠婷","sex":"女", "loves":["唱歌","跳舞","男"]},
+					 ];
+			$(function (){
+				var strHTML = "";
+				for(var i=0;i<stus.length;i++){
+					var temp = stus[i];
+					strHTML += "<tr>";
+					strHTML += "	<td>"+temp.name+"</td>";
+					strHTML += "	<td>"+temp.sex+"</td>";
+					strHTML += "	<td>"+temp.loves+"</td>";
+					strHTML += "<tr>";
+				}
+				$("#J_tbData").html(strHTML)
+			});
+			
+
+		</script>
+	</head>
+	<body>
+		<table >
+			<thead>
+			<tr>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>爱好</th>
+			</tr>	
+			</thead>
+			<tbody id="J_tbData">
+			</tbody>
+		</table>			
+	</body>
+</html>
