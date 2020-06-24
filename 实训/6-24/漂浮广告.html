@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>漂浮广告</title>
+	</head>
+	<body>
+		<div style="left: 1%; top: 33%; position: absolute;" id="dvAdv">
+			<img src="img/cs40004.jpg" width="200" height="200"/>
+		</div>
+		<div style="left: 40%; top: 33%; position: absolute;" id="dvAdv1">
+			<img src="img/cs40010.png" width="200" height="200"/>
+		</div>
+	</body>
+</html>
+<script>
+	var dx = 1;
+	var dy = 1;
+	function move(){
+		var dv = document.getElementById("dvAdv");
+		var left = dv.style.left;
+		left = parseInt(left);
+		if(left>1024 || left<=0){
+			dx = -dx;
+		}
+		left = left + dx + "px";
+		dv.style.left=left;
+		console.log(left);
+		setTimeout("move()",4);
+	}
+	function move1(){
+		var dv = document.getElementById("dvAdv1");
+		var top = dv.style.top;
+		top = parseInt(top);
+		if(top>450 || top<=0){
+			dy = -dy;
+		}
+		top = top + dy + "px";
+		dv.style.top=top;
+		console.log(top);
+		setTimeout("move1()",12);
+	}
+	move();
+	move1();
+</script>

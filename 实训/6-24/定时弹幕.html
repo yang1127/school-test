@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定时弹幕</title>
+	</head>
+	<body>
+		<div id="danmu"style="text-align: center;"></div>
+	</body>
+</html>
+<script>
+	var cz = "我爱我自己！！";
+	var i=1;
+	function show(){
+		var showMsg = cz.substr(0,i);
+		i++;
+		if(i>cz.length){
+			i=0;
+		}
+		document.getElementById("danmu").innerHTML = showMsg;
+		setTimeout("show()",400);
+	}
+	show();
+</script>
