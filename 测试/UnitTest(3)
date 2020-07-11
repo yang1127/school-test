@@ -1,0 +1,36 @@
+#discover()
+
+# -*- coding: utf-8 -*-
+import unittest,csv
+import os,sys
+import time
+#手工添加案例到套件，
+def createsuite():
+
+     discover=unittest.defaultTestLoader.discover('../test',pattern='test*.py',top_level_dir=None)
+    print discover
+    return discover
+
+if __name__=="__main__":
+    suite=createsuite()
+    runner = unittest.TextTestRunner(verbosity=2)
+    runner.run(suite
+
+
+#忽略用例执行
+
+@unittest.skip(u'The function was canceled, neglects to perform thecase')
+
+@unittest.skip("skipping")
+def test_baidusearch(self):
+driver = self.driver
+driver.get(self.base_url + "/")
+driver.find_element_by_id("kw").click()
+driver.find_element_by_id("kw").clear()
+driver.find_element_by_id("kw").send_keys(u"测试")
+driver.find_element_by_id("su").click()
+driver.find_element_by_id("su").click()
+
+
+#断言
+self.assertEqual("admin", driver.find_element_by_link_text("admin").text)
