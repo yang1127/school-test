@@ -227,10 +227,10 @@
 # print(list) #[5, 4, 3, 2, 1]
 
 #冒泡排序
-list = [1, 5, 2, 4, 3]
-length = len(list)
-for i in range(0, length - 1):
-    for j in range(0, length - 1 - i):
-        if list[j] > list[j + 1]:
-            list[j], list[j + 1] = list[j + 1], list[j]
-print(list)
+# list = [1, 5, 2, 4, 3]
+# length = len(list)
+# for i in range(0, length - 1):
+#     for j in range(0, length - 1 - i):
+#         if list[j] > list[j + 1]:
+#             list[j], list[j + 1] = list[j + 1], list[j]
+# print(list)
