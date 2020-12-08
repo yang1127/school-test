@@ -1,0 +1,69 @@
+-*- coding: utf-8 -*-
+import unittest, csv
+import os, sys
+import time
+import HTMLTestRunner
+
+# 手工添加案例到套件，
+def createsuite():
+    discover = unittest.defaultTestLoader.discover('../src', pattern='test*.py', top_level_dir=None)
+    print(discover)
+    return discover
+
+if __name__ == "__main__":
+    curpath = sys.path[0] #list
+    # 取当前时间
+    now = time.strftime("%Y-%m-%d-%H %M %S", time.localtime(time.time()))  #将时间戳转换为当地时间
+    if not os.path.exists(curpath + '/resultreport'): #在当前路径下，建立resultreport文件夹，存放报告
+        os.makedirs(curpath + '/resultreport')
+
+    filename = curpath + '/resultreport/' + now + 'resultreport.html'  # 路径+文件名
+    with open(filename, 'wb') as fp:
+        # 出html报告
+        runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=u'测试报告', description=u'用例执行情况', verbosity=2)
+        suite = createsuite()
+        runner.run(suite)
+
+# coding = utf-8
+import os
+import time
+import unittest
+from selenium import webdriver
+
+class Baidu(unittest.TestCase):
+
+    # test fixture，初始化环境
+    def setUp(self):  # self 代表这个类的实例
+        self.driver = webdriver.Firefox()  # 每一个变量前self.  python语法
+        self.driver.implicitly_wait(30)
+        self.base_url = "http://www.baidu.com/"
+        self.verificationErrors = []
+        self.accept_next_alert = True
+
+    # test fixture，清除环境
+    def tearDown(self):
+        self.driver.quit()
+        self.assertEqual([], self.verificationErrors)
+
+    def test_hao(self):
+        driver = self.driver
+        driver.get(self.base_url)
+        driver.find_element_by_link_text("hao123").click()
+        try:
+            self.assertEqual(u"hao_上网从这里开始", driver.title)
+        except:  # 异常捕捉
+            self.saveScreenShot(driver, "hao.png")
+        time.sleep(1)
+
+    def saveScreenShot(self, driver, file_name):
+        if not os.path.exists('./image'):  # 当前路径
+            os.makedirs('./image')
+        now = time.strftime("%Y%m%d-%H%M%S", time.localtime(time.time()))
+
+        # 截图保存
+        driver.get_screenshot_as_file('./image/' + now + '-' + file_name)
+        time.sleep(1)
+
+if __name__ == "__main__": #相当于主函数
+#执行用例
+     unittest.main(verbosity=2) #参数值不同，效果不同
